@@ -8,6 +8,6 @@ for f in uto-sync.sh uto-stream.sh; do
   curl -fsSL "$RAW/$f?$(date +%s)" -o /srv/uto/bin/$f; chmod 755 /srv/uto/bin/$f; chown uto:uto /srv/uto/bin/$f
   printf '#!/bin/bash\nexec /srv/uto/bin/%s "$@"\n' "$f" > /usr/local/bin/$f; chmod 755 /usr/local/bin/$f
 done
-systemctl start uto-sync.service || true
+systemctl start --no-block uto-sync.service || true
 systemctl restart uto-stream.service
 echo "Updated. Stream library now:"; ls -1 /srv/uto/stream
