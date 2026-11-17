@@ -49,6 +49,51 @@
    "sha256": "1432693275989851ef70ce79077140715a5dc9de7e9d462048068a01679e82da",
    "public": false,
    "stream": true
+  },
+  {
+   "id": "jet-engine",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-5/jet-engine.mp4.part0"
+   ],
+   "sha256": "eb59b8b998c918ef9e65c68808212866b4262accd3a0ed209e63916ae613896d",
+   "public": false,
+   "stream": true
+  },
+  {
+   "id": "power-grid-restart",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-6/power-grid-restart.mp4.part0"
+   ],
+   "sha256": "0562cb565c6bf47e5a872782f3429289ad9f7d2143501f238ac6493802745ad3",
+   "public": false,
+   "stream": true
+  },
+  {
+   "id": "firework-diwali",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-7/firework-diwali.mp4.part0"
+   ],
+   "sha256": "766468bb1af67efa23875ccf5bd0a13e9cf2b9436411fe24a69ee401392b6acf",
+   "public": false,
+   "stream": true
+  },
+  {
+   "id": "nvidia-ai-bubble",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-8/nvidia-ai-bubble.mp4.part0"
+   ],
+   "sha256": "d96df8c5ca49c4be8a4d2f3aa718257b648671cc6780ab3b580c852d12d875c3",
+   "public": false,
+   "stream": true
+  },
+  {
+   "id": "pressure-cooker",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-9/pressure-cooker.mp4.part0"
+   ],
+   "sha256": "4e0364f9e60c9f0e3da635b2df7c7f88230413beebb4491ae21fe73618b94f7e",
+   "public": false,
+   "stream": true
   }
  ]
 }
