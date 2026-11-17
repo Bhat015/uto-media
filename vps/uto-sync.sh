@@ -5,6 +5,14 @@
 #   stream -> a normalised copy is added to the 24/7 live loop
 set -euo pipefail
 BASE=/srv/uto
+RAW=https://raw.githubusercontent.com/Bhat015/uto-media/main/vps
+# keep the server scripts current (installed copies in /usr/local/bin exec these)
+mkdir -p "$BASE/bin"
+for f in uto-sync.sh uto-stream.sh; do
+  if curl -fsSL "$RAW/$f?$(date +%s)" -o "$BASE/bin/$f.new" && bash -n "$BASE/bin/$f.new"; then
+    chmod 755 "$BASE/bin/$f.new"; mv "$BASE/bin/$f.new" "$BASE/bin/$f"
+  else rm -f "$BASE/bin/$f.new"; fi
+done
 MAN=$(curl -fsSL "https://raw.githubusercontent.com/Bhat015/uto-media/main/manifest.json?$(date +%s)") || exit 0
 echo "$MAN" | jq -c '.videos[]' | while read -r v; do
   id=$(jq -r .id <<<"$v"); sha=$(jq -r .sha256 <<<"$v")
