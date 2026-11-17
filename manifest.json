@@ -57,8 +57,13 @@
    ],
    "sha256": "eb59b8b998c918ef9e65c68808212866b4262accd3a0ed209e63916ae613896d",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-5/jet-engine.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-5/jet-engine.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-5/jet-engine.ts.part2"
+   ],
+   "streamSha256": "a990a9290de81ce73f5ea6bac7397ad40b991b3e5a291eb154c94c314c7fe786"
   },
   {
    "id": "power-grid-restart",
