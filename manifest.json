@@ -67,8 +67,13 @@
    ],
    "sha256": "0562cb565c6bf47e5a872782f3429289ad9f7d2143501f238ac6493802745ad3",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-4/power-grid-restart.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-4/power-grid-restart.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-4/power-grid-restart.ts.part2"
+   ],
+   "streamSha256": "93f2dba7df094807af01a78057a00c54c27e29f072522d87c6a6f2e6ad39d49e"
   },
   {
    "id": "firework-diwali",
@@ -77,8 +82,11 @@
    ],
    "sha256": "766468bb1af67efa23875ccf5bd0a13e9cf2b9436411fe24a69ee401392b6acf",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-2/firework-diwali.ts.part0"
+   ],
+   "streamSha256": "7126d214320d79ce17a82e9d4f2c1b24b6840acf32e8d4620a34186ea9461f63"
   },
   {
    "id": "nvidia-ai-bubble",
@@ -87,8 +95,12 @@
    ],
    "sha256": "d96df8c5ca49c4be8a4d2f3aa718257b648671cc6780ab3b580c852d12d875c3",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-3/nvidia-ai-bubble.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-3/nvidia-ai-bubble.ts.part1"
+   ],
+   "streamSha256": "818ea0d9e2dd904b4e95f95fcb449b6af6bf79c8819ce9de407512f5e7d7964f"
   },
   {
    "id": "pressure-cooker",
@@ -97,8 +109,12 @@
    ],
    "sha256": "4e0364f9e60c9f0e3da635b2df7c7f88230413beebb4491ae21fe73618b94f7e",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-1/pressure-cooker.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-1/pressure-cooker.ts.part1"
+   ],
+   "streamSha256": "57d5751f8954879772b51f678a7822725124a05005a2e0eb429e96f8e1e42d06"
   }
  ]
 }
