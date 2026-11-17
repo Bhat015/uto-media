@@ -28,7 +28,14 @@ echo "$MAN" | jq -c '.videos[]' | while read -r v; do
   if [ "$(jq -r '.public // false' <<<"$v")" = true ] && [ ! -e "$BASE/public/$id.mp4" ]; then
     ln -f "$src" "$BASE/public/$id.mp4" 2>/dev/null || cp "$src" "$BASE/public/$id.mp4"
   fi
-  if [ "$(jq -r '.stream // false' <<<"$v")" = true ] && [ ! -s "$BASE/stream/$id.ts" ]; then
+  if [ "$(jq -r '.stream // false' <<<"$v")" = true ] && [ ! -s "$BASE/stream/$id.ts" ] && [ "$(jq -r '.streamParts // empty | length' <<<"$v")" != "" ]; then
+    # stream copy already prepared off-server: just download and verify it (saves the server's CPU)
+    tmp="$BASE/stream/$id.ts.tmp"; : > "$tmp"; ok=1
+    for u in $(jq -r '.streamParts[]' <<<"$v"); do curl -fsSL "$u" >> "$tmp" || { ok=0; break; }; done
+    if [ $ok = 1 ] && [ "$(sha256sum "$tmp" | cut -d' ' -f1)" = "$(jq -r .streamSha256 <<<"$v")" ]; then mv "$tmp" "$BASE/stream/$id.ts"; echo "stream-ready $id (prepared)";
+    else rm -f "$tmp"; echo "pending stream copy $id"; fi
+  fi
+  if [ "$(jq -r '.stream // false' <<<"$v")" = true ] && [ ! -s "$BASE/stream/$id.ts" ] && [ -z "$(jq -r '.streamParts // empty' <<<"$v")" ]; then
     # one uniform profile so the live loop can copy streams without re-encoding
     ffmpeg -nostdin -v error -y -i "$src" -vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" \
       -c:v libx264 -preset veryfast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 60 -keyint_min 60 -sc_threshold 0 \
