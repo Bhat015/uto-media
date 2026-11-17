@@ -1,0 +1,35 @@
+#!/bin/bash
+# Pulls new videos listed in uto-media/main/manifest.json.
+# Each entry: {"id","parts":[raw URLs],"sha256","bytes","stream":bool,"public":bool}
+#   public -> copy is served at https://<host>/<id>.mp4 (for vidIQ imports)
+#   stream -> a normalised copy is added to the 24/7 live loop
+set -euo pipefail
+BASE=/srv/uto
+MAN=$(curl -fsSL "https://raw.githubusercontent.com/Bhat015/uto-media/main/manifest.json?$(date +%s)") || exit 0
+echo "$MAN" | jq -c '.videos[]' | while read -r v; do
+  id=$(jq -r .id <<<"$v"); sha=$(jq -r .sha256 <<<"$v")
+  [[ "$id" =~ ^[a-z0-9-]+$ ]] || { echo "skip bad id $id"; continue; }
+  src="$BASE/parts/$id.mp4"
+  if [ ! -s "$src" ] || [ "$(sha256sum "$src" | cut -d' ' -f1)" != "$sha" ]; then
+    tmp="$src.tmp"; : > "$tmp"
+    ok=1
+    for u in $(jq -r '.parts[]' <<<"$v"); do curl -fsSL "$u" >> "$tmp" || { ok=0; break; }; done
+    if [ $ok = 1 ] && [ "$(sha256sum "$tmp" | cut -d' ' -f1)" = "$sha" ]; then mv "$tmp" "$src"; echo "got $id";
+    else rm -f "$tmp"; echo "pending $id (parts not available or checksum mismatch)"; continue; fi
+  fi
+  if [ "$(jq -r '.public // false' <<<"$v")" = true ] && [ ! -e "$BASE/public/$id.mp4" ]; then
+    ln -f "$src" "$BASE/public/$id.mp4" 2>/dev/null || cp "$src" "$BASE/public/$id.mp4"
+  fi
+  if [ "$(jq -r '.stream // false' <<<"$v")" = true ] && [ ! -s "$BASE/stream/$id.ts" ]; then
+    # one uniform profile so the live loop can copy streams without re-encoding
+    ffmpeg -nostdin -v error -y -i "$src" -vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" \
+      -c:v libx264 -preset veryfast -b:v 4500k -maxrate 4500k -bufsize 9000k -g 60 -keyint_min 60 -sc_threshold 0 \
+      -c:a aac -b:a 128k -ar 44100 -ac 2 -f mpegts "$BASE/stream/$id.ts.tmp" && mv "$BASE/stream/$id.ts.tmp" "$BASE/stream/$id.ts" && echo "stream-ready $id"
+  fi
+done
+# remove library items no longer in the manifest
+keep=$(echo "$MAN" | jq -r '.videos[].id')
+for f in "$BASE"/parts/*.mp4 "$BASE"/public/*.mp4 "$BASE"/stream/*.ts; do
+  [ -e "$f" ] || continue; b=$(basename "$f"); b=${b%.*}
+  grep -qx "$b" <<<"$keep" || { rm -f "$f"; echo "removed $b"; }
+done
