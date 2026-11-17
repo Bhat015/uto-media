@@ -28,17 +28,40 @@ install -d -o uto -g uto /srv/uto /srv/uto/public /srv/uto/stream /srv/uto/parts
 install -d -m 700 /etc/uto
 for f in uto-sync.sh uto-stream.sh; do curl -fsSL "$RAW/$f" -o /usr/local/bin/$f; chmod 755 /usr/local/bin/$f; done
 
-# HTTPS host name from the public IPv4 (sslip.io resolves a-b-c-d.sslip.io to a.b.c.d)
-IP=$(curl -fsS -4 https://checkip.amazonaws.com | tr -d '[:space:]')
+# HTTPS host name from the public IPv4 (sslip.io resolves a-b-c-d.sslip.io to a.b.c.d).
+# Re-derived on every boot, so attaching a static IP later only needs a reboot.
+cat > /usr/local/bin/uto-host.sh <<'EOS'
+#!/bin/bash
+set -euo pipefail
+IP=$(curl -fsS -4 --retry 5 --retry-delay 3 https://checkip.amazonaws.com | tr -d '[:space:]')
 HOST="${IP//./-}.sslip.io"
-cat > /etc/caddy/Caddyfile <<EOF
-$HOST {
+NEW="$HOST {
     root * /srv/uto/public
     file_server
-    header Cache-Control "no-store"
-}
+    header Cache-Control \"no-store\"
+}"
+if [ "$(cat /etc/caddy/Caddyfile 2>/dev/null)" != "$NEW" ]; then
+  echo "$NEW" > /etc/caddy/Caddyfile
+  systemctl reload caddy 2>/dev/null || systemctl restart caddy
+fi
+echo "https://$HOST/" > /srv/uto/MEDIA_URL
+EOS
+chmod 755 /usr/local/bin/uto-host.sh
+cat > /etc/systemd/system/uto-host.service <<'EOF'
+[Unit]
+Description=Point Caddy at this server's current public IP
+After=network-online.target caddy.service
+Wants=network-online.target
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/uto-host.sh
+[Install]
+WantedBy=multi-user.target
 EOF
-systemctl reload caddy || systemctl restart caddy
+systemctl daemon-reload
+systemctl enable uto-host.service
+/usr/local/bin/uto-host.sh
+HOST=$(sed 's#https://##; s#/##' /srv/uto/MEDIA_URL)
 
 cat > /etc/systemd/system/uto-sync.service <<'EOF'
 [Unit]
