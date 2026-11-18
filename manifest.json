@@ -30,8 +30,14 @@
    ],
    "sha256": "dbab53b044c4dd6d175b29b596644e2fe35ee00cd5b663b6085be1c36aa780e6",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-8/aqi.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-8/aqi.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-8/aqi.ts.part2",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-8/aqi.ts.part3"
+   ],
+   "streamSha256": "202a198bd9e0cc3d6d312afa0d34af3917de66c6d5ae157537d83296f4a0c255"
   },
   {
    "id": "gta6-launch-night",
