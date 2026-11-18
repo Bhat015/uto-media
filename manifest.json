@@ -39,7 +39,8 @@
    ],
    "sha256": "a6094f961dd511163ef626c21152fae65cddff08d9f07cf3779a07f76b45b75e",
    "public": false,
-   "stream": true
+   "stream": false,
+   "streamPending": true
   },
   {
    "id": "helicopter-3d",
@@ -48,7 +49,8 @@
    ],
    "sha256": "1432693275989851ef70ce79077140715a5dc9de7e9d462048068a01679e82da",
    "public": false,
-   "stream": true
+   "stream": false,
+   "streamPending": true
   },
   {
    "id": "jet-engine",
