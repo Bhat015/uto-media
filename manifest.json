@@ -124,6 +124,24 @@
     "https://raw.githubusercontent.com/Bhat015/uto-media/stream-1/pressure-cooker.ts.part1"
    ],
    "streamSha256": "57d5751f8954879772b51f678a7822725124a05005a2e0eb429e96f8e1e42d06"
+  },
+  {
+   "id": "cheat-codes-short",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-10/cheat-codes-short.mp4"
+   ],
+   "sha256": "631be4357b7ea4989399c1f7faff031bf9a8adb2564df5b56052d616f29395d8",
+   "public": true,
+   "stream": false
+  },
+  {
+   "id": "cheat-codes-short-ig",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-10/cheat-codes-short-ig.mp4"
+   ],
+   "sha256": "b11eb13fded925752a5e1c1048884b74f8dbea7a77223ff7b068314684c25b86",
+   "public": true,
+   "stream": false
   }
  ]
 }
