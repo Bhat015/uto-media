@@ -51,8 +51,12 @@
    ],
    "sha256": "1432693275989851ef70ce79077140715a5dc9de7e9d462048068a01679e82da",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-6/helicopter-3d.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-6/helicopter-3d.ts.part1"
+   ],
+   "streamSha256": "e395de3d24ba4c7ae00bf471cd0d99630a43ed8c5f0ebabf56a3d2e7e17521b3"
   },
   {
    "id": "jet-engine",
