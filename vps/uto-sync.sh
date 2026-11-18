@@ -48,3 +48,6 @@ for f in "$BASE"/parts/*.mp4 "$BASE"/public/*.mp4 "$BASE"/stream/*.ts; do
   [ -e "$f" ] || continue; b=$(basename "$f"); b=${b%.*}
   grep -qx "$b" <<<"$keep" || { rm -f "$f"; echo "removed $b"; }
 done
+# status page: https://<host>/status.txt
+{ echo "updated: $(date '+%F %T %Z')"; echo "stream library:"; for f in "$BASE"/stream/*.ts; do [ -e "$f" ] && echo "  $(basename "$f") $(du -m "$f" | cut -f1) MB"; done
+  echo "stream service: $(systemctl is-active uto-stream 2>/dev/null)"; } > "$BASE/public/status.txt.tmp" && mv "$BASE/public/status.txt.tmp" "$BASE/public/status.txt"
