@@ -8,8 +8,8 @@ BASE=/srv/uto
 RAW=https://raw.githubusercontent.com/Bhat015/uto-media/main/vps
 # keep the server scripts current (installed copies in /usr/local/bin exec these)
 mkdir -p "$BASE/bin"
-for f in uto-sync.sh uto-stream.sh; do
-  if curl -fsSL "$RAW/$f?$(date +%s)" -o "$BASE/bin/$f.new" && bash -n "$BASE/bin/$f.new"; then
+for f in uto-sync.sh uto-stream.sh uto-broadcast.py; do
+  if curl -fsSL "$RAW/$f?$(date +%s)" -o "$BASE/bin/$f.new" && { [[ $f == *.py ]] && python3 -m py_compile "$BASE/bin/$f.new" || bash -n "$BASE/bin/$f.new"; }; then
     chmod 755 "$BASE/bin/$f.new"; mv "$BASE/bin/$f.new" "$BASE/bin/$f"
   else rm -f "$BASE/bin/$f.new"; fi
 done
