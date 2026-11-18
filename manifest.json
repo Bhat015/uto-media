@@ -41,8 +41,14 @@
    ],
    "sha256": "a6094f961dd511163ef626c21152fae65cddff08d9f07cf3779a07f76b45b75e",
    "public": false,
-   "stream": false,
-   "streamPending": true
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-7/gta6-launch-night.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-7/gta6-launch-night.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-7/gta6-launch-night.ts.part2",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-7/gta6-launch-night.ts.part3"
+   ],
+   "streamSha256": "a69d2f588ec7d1732b6e51c365d7eb96d37bd1b21239f4382d0d3bc469a39b7e"
   },
   {
    "id": "helicopter-3d",
