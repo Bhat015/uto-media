@@ -19,7 +19,8 @@
    ],
    "sha256": "be6bf32eb41e88b64f3f0d45ad44a343754437a50c518bdbad01c8c6ea4284a6",
    "public": false,
-   "stream": true
+   "stream": false,
+   "streamPending": true
   },
   {
    "id": "aqi",
@@ -29,7 +30,8 @@
    ],
    "sha256": "dbab53b044c4dd6d175b29b596644e2fe35ee00cd5b663b6085be1c36aa780e6",
    "public": false,
-   "stream": true
+   "stream": false,
+   "streamPending": true
   },
   {
    "id": "gta6-launch-night",
