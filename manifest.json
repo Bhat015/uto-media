@@ -192,6 +192,16 @@
    "sha256": "30a90017540a8d6ca67d9d746f88169801e6c8321d6a29d7537cce01932c3a0a",
    "public": true,
    "stream": false
+  },
+  {
+   "id": "fog-landing",
+   "parts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-13/fog-landing.mp4.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/outbox-13/fog-landing.mp4.part1"
+   ],
+   "sha256": "edb7a222ea64c9dd55e1e2fd7423378e6e74e775bae520f04fc1283478460ec0",
+   "public": true,
+   "stream": false
   }
  ]
 }
