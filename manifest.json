@@ -8,7 +8,13 @@
    ],
    "sha256": "fcf4047f90c68e50b0479f9649873892692038d28215790e894eec06a8598b2e",
    "public": true,
-   "stream": false
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-10/cheat-codes.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-10/cheat-codes.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-10/cheat-codes.ts.part2"
+   ],
+   "streamSha256": "9e506ab14e8653a4fad321df23fd009d294e36785681a28e6c174fd049418996"
   },
   {
    "id": "starlink",
