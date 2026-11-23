@@ -249,7 +249,14 @@
    ],
    "sha256": "e5e8a8ec3ae4bdc94c4c7b2a9f5d297cea251d812da3cd173975282118abeb5e",
    "public": true,
-   "stream": false
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-13/ro-purifier.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-13/ro-purifier.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-13/ro-purifier.ts.part2",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-13/ro-purifier.ts.part3"
+   ],
+   "streamSha256": "1ed3db5e034e35b50d002104d0e619a7e86a5cb185aec42cd75c0e626a493ff8"
   },
   {
    "id": "pencil-short",
