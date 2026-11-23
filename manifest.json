@@ -179,7 +179,14 @@
    ],
    "sha256": "34bf9f6218dbb75a18851ad49b513b2cb73f4d29ae078b7cee8c6c5c77a54fa0",
    "public": true,
-   "stream": false
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-11/geyser.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-11/geyser.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-11/geyser.ts.part2",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-11/geyser.ts.part3"
+   ],
+   "streamSha256": "2f2923559710edbee7c2fb745a8be70fe07130edf3b42faa26971bbc4be97b86"
   },
   {
    "id": "gas-cylinder-short",
