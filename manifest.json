@@ -214,7 +214,14 @@
    ],
    "sha256": "edb7a222ea64c9dd55e1e2fd7423378e6e74e775bae520f04fc1283478460ec0",
    "public": true,
-   "stream": false
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-12/fog-landing.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-12/fog-landing.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-12/fog-landing.ts.part2",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-12/fog-landing.ts.part3"
+   ],
+   "streamSha256": "e59497388906beee2acc67a148432b992ed3be2328a182e27dd6d2f14581bb07"
   },
   {
    "id": "fog-landing-short",
