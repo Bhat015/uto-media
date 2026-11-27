@@ -336,7 +336,13 @@
    ],
    "sha256": "8035ce5bd0fad67c68459d8a36ead7c2845f08cc3c59425491e41536ee9f8565",
    "public": true,
-   "stream": false
+   "stream": true,
+   "streamParts": [
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-15/room-heater.ts.part0",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-15/room-heater.ts.part1",
+    "https://raw.githubusercontent.com/Bhat015/uto-media/stream-15/room-heater.ts.part2"
+   ],
+   "streamSha256": "eb3bb5bee4badca0e05e0fdfecaa8125950cf1835dd4fa1c20bb9a7f5f7cf531"
   },
   {
    "id": "room-heater-short",
