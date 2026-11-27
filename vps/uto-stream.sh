@@ -6,6 +6,7 @@
 set -euo pipefail
 : "${YT_STREAM_KEY:?missing YT_STREAM_KEY in /etc/uto/stream.env}"
 LIB=/srv/uto/stream
+if [ -e /srv/uto/stream.off ]; then echo "live stream switched off (manifest liveStream: false)"; sleep 3600; exit 0; fi
 mapfile -t files < <(ls "$LIB"/*.ts 2>/dev/null | shuf)
 [ ${#files[@]} -gt 0 ] || { echo "no stream files yet"; sleep 600; exit 1; }
 # a fresh broadcast for this session (YouTube doesn't make one after the previous ends)
